@@ -83,6 +83,7 @@ def download_gpt2(model_dir='models', model_name='anton-v1'):
     if not os.path.exists(sub_dir):
         os.makedirs(sub_dir)
     sub_dir = sub_dir.replace('\\', '/')  # needed for Windows
+    print('directory has been found or created')
 
     for file_name in ['checkpoint', 'encoder.json', 'hparams.json',
                       'model.ckpt.data-00000-of-00001', 'model.ckpt.index',
