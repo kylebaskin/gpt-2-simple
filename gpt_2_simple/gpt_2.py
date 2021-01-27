@@ -55,6 +55,7 @@ def download_file_with_progress(url_base, sub_dir, model_name, file_name):
     print(r)
     with open(os.path.join(sub_dir, file_name), 'wb') as f:
         file_size = int(r.headers["content-length"])
+        print(file_size)
         with tqdm(ncols=100, desc="Fetching " + file_name,
                   total=file_size, unit_scale=True) as pbar:
             for chunk in r.iter_content(chunk_size=DOWNLOAD_CHUNK_SIZE):
@@ -89,7 +90,7 @@ def download_gpt2(model_dir='models', model_name='anton-v1'):
     for file_name in ['checkpoint', 'encoder.json', 'hparams.json',
                       'model.ckpt.data-00000-of-00001', 'model.ckpt.index',
                       'model.ckpt.meta', 'vocab.bpe']:
-        download_file_with_progress(url_base="https://anton.summitwebsolutions.com/gpt-2",
+        download_file_with_progress(url_base="https://openaipublic.blob.core.windows.net/gpt-2",
                                     sub_dir=sub_dir,
                                     model_name=model_name,
                                     file_name=file_name)
