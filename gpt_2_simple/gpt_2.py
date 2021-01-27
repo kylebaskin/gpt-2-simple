@@ -63,7 +63,7 @@ def download_file_with_progress(url_base, sub_dir, model_name, file_name):
                 pbar.update(DOWNLOAD_CHUNK_SIZE)
 
 
-def download_gpt2(model_dir='models', model_name='anton-v1'):
+def download_gpt2(model_dir='models', model_name='124M'):
     """Downloads the GPT-2 model into the current directory
     from Google Cloud Storage.
 
