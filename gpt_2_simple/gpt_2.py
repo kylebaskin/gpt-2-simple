@@ -63,7 +63,7 @@ def download_file_with_progress(url_base, sub_dir, model_name, file_name):
                 pbar.update(DOWNLOAD_CHUNK_SIZE)
 
 
-def download_gpt2(model_dir='models', model_name='124M'):
+def download_gpt2(model_dir='models', model_name='anton-v1'):
     """Downloads the GPT-2 model into the current directory
     from Google Cloud Storage.
 
@@ -90,7 +90,7 @@ def download_gpt2(model_dir='models', model_name='124M'):
     for file_name in ['checkpoint', 'encoder.json', 'hparams.json',
                       'model.ckpt.data-00000-of-00001', 'model.ckpt.index',
                       'model.ckpt.meta', 'vocab.bpe']:
-        download_file_with_progress(url_base="https://openaipublic.blob.core.windows.net/gpt-2/",
+        download_file_with_progress(url_base="https://anton.summitwebsolutions.com/gpt-2/",
                                     sub_dir=sub_dir,
                                     model_name=model_name,
                                     file_name=file_name)
