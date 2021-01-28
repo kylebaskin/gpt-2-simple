@@ -245,6 +245,7 @@ def finetune(sess,
         max_to_keep=max_checkpoints)
     sess.run(tf.compat.v1.global_variables_initializer())
 
+    checkpoint_path = 'content/checkpoint/anton-v1'
     if restore_from == 'latest':
         ckpt = tf.train.latest_checkpoint(checkpoint_path)
         if ckpt is None:
