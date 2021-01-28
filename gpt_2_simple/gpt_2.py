@@ -394,7 +394,7 @@ def load_gpt2(sess,
 
     if checkpoint=='latest':
         ckpt = tf.train.latest_checkpoint(checkpoint_path)
-        print(checkpoint_path)
+        print(ckpt)
     else:
         ckpt = os.path.join(checkpoint_path,checkpoint)
 
