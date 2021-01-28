@@ -187,7 +187,7 @@ def finetune(sess,
         raise ValueError(
             "Can't get samples longer than window size: %s" % hparams.n_ctx)
 
-    if model_name not in ['117M', '124M']:
+    if model_name not in ['117M', '124M', 'anton-v1']:
         use_memory_saving_gradients = True
         only_train_transformer_layers = True
         accumulate_gradients = 1
@@ -257,7 +257,7 @@ def finetune(sess,
     else:
         ckpt = tf.train.latest_checkpoint(restore_from)
     print('Loading checkpoint', ckpt)
-    saver.restore(sess, ckpt)
+    #saver.restore(sess, ckpt)
 
     print('Loading dataset...')
     chunks = load_dataset(enc, dataset, combine)
