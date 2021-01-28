@@ -255,6 +255,7 @@ def finetune(sess,
     elif restore_from == 'fresh':
         ckpt = tf.train.latest_checkpoint(
             os.path.join(model_dir, model_name))
+        print(ckpt + ' printing checkpoint!!!')
     else:
         ckpt = tf.train.latest_checkpoint(restore_from)
     print('Loading checkpoint', ckpt)
