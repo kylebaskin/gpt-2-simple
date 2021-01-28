@@ -130,7 +130,7 @@ def get_available_gpus():
 def finetune(sess,
              dataset,
              steps=-1,
-             model_name='124M',
+             model_name='anton-v1',
              model_dir='models',
              combine=50000,
              batch_size=1,
@@ -625,7 +625,7 @@ def copy_file_from_gdrive(file_path):
     shutil.copyfile("/content/drive/My Drive/" + file_path, file_path)
 
 
-def is_gpt2_downloaded(model_dir='models', model_name='124M'):
+def is_gpt2_downloaded(model_dir='models', model_name='anton-v1'):
     """Checks if the original model + associated files are present in folder."""
 
     for filename in ['checkpoint', 'encoder.json', 'hparams.json',
@@ -653,7 +653,7 @@ def encode_csv(csv_path, out_path='csv_encoded.txt', header=True,
 
 
 def encode_dataset(file_path, model_dir='models', out_path='text_encoded.npz',
-                   model_name="124M",
+                   model_name="anton-v1",
                    combine=50000):
     """Preencodes a text document into chunks and compresses it,
     saving time when generated.
