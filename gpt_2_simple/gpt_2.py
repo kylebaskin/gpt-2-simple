@@ -137,7 +137,7 @@ def finetune(sess,
              learning_rate=0.0001,
              accumulate_gradients=5,
              restore_from='latest',
-             run_name='run1',
+             run_name='anton-run1',
              checkpoint_dir='checkpoint',
              sample_every=100,
              sample_length=1023,
@@ -257,7 +257,7 @@ def finetune(sess,
     else:
         ckpt = tf.train.latest_checkpoint(restore_from)
     print('Loading checkpoint', ckpt)
-    #saver.restore(sess, ckpt)
+    saver.restore(sess, ckpt) ### was throwing an error, don't know why but taking this out makes it run
 
     print('Loading dataset...')
     chunks = load_dataset(enc, dataset, combine)
@@ -366,7 +366,7 @@ def finetune(sess,
 
 def load_gpt2(sess,
               checkpoint='latest',
-              run_name="run1",
+              run_name="anton-run1",
               checkpoint_dir="checkpoint",
               model_name=None,
               model_dir='models',
@@ -394,6 +394,7 @@ def load_gpt2(sess,
 
     if checkpoint=='latest':
         ckpt = tf.train.latest_checkpoint(checkpoint_path)
+        print(checkpoint_path)
     else:
         ckpt = os.path.join(checkpoint_path,checkpoint)
 
@@ -408,7 +409,7 @@ def load_gpt2(sess,
 
 
 def generate(sess,
-             run_name='run1',
+             run_name='anton-run1',
              checkpoint_dir='checkpoint',
              model_name=None,
              model_dir='models',
@@ -510,7 +511,7 @@ def generate(sess,
 
 
 def generate_to_file(sess,
-                     run_name='run1',
+                     run_name='anton-run1',
                      checkpoint_dir='checkpoint',
                      model_name=None,
                      model_dir='models',
@@ -572,7 +573,7 @@ def get_tarfile_name(checkpoint_folder):
     return tarfile_name
 
 
-def copy_checkpoint_to_gdrive(run_name='run1', copy_folder=False):
+def copy_checkpoint_to_gdrive(run_name='anton-run1', copy_folder=False):
     """Copies the checkpoint folder to a mounted Google Drive."""
     is_mounted()
 
@@ -590,7 +591,7 @@ def copy_checkpoint_to_gdrive(run_name='run1', copy_folder=False):
         shutil.copyfile(file_path, "/content/drive/My Drive/" + file_path)
 
 
-def copy_checkpoint_from_gdrive(run_name='run1', copy_folder=False):
+def copy_checkpoint_from_gdrive(run_name='anton-run1', copy_folder=False):
     """Copies the checkpoint folder from a mounted Google Drive."""
     is_mounted()
 
@@ -678,13 +679,13 @@ def cmd():
         '--mode', help='Mode for using the CLI (either "finetune" or "generate") [Required]', nargs='?')
     parser.add_argument(
         '--run_name',  help="[finetune/generate] Run number to save/load the model",
-        nargs='?', default='run1')
+        nargs='?', default='anton-run1')
     parser.add_argument(
         '--checkpoint_dir', help="[finetune] Path of the checkpoint directory",
         nargs='?', default='checkpoint')
     parser.add_argument(
         '--model_name',  help="[finetune] Name of the GPT-2 model to finetune",
-        nargs='?', default='124M')
+        nargs='?', default='anton-v1')
     parser.add_argument(
         '--model_dir', help="[finetune] Path of directory of the GPT-2 model to finetune",
         nargs='?', default='models')
